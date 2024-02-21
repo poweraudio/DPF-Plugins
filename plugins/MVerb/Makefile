@@ -28,13 +28,15 @@ include ../../dpf/Makefile.plugins.mk
 # --------------------------------------------------------------
 # Enable all possible plugin types
 
-TARGETS = jack ladspa lv2_sep vst2 vst3 clap
+PLUGIN_FORMATS = jack ladspa lv2 vst2 vst3 clap
 
 ifeq ($(HAVE_DGL),true)
 ifeq ($(HAVE_LIBLO),true)
-TARGETS += dssi
+PLUGIN_FORMATS += dssi
 endif
 endif
+
+TARGETS = $(patsubst lv2,lv2_sep,$(PLUGIN_FORMATS))
 
 all: $(TARGETS)
 

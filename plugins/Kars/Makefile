@@ -23,6 +23,10 @@ include ../../dpf/Makefile.plugins.mk
 # --------------------------------------------------------------
 # Enable all possible plugin types
 
-all: jack dssi_dsp lv2_dsp vst2 vst3 clap
+PLUGIN_FORMATS = jack dssi lv2 vst2 vst3 clap
+TARGETS = $(patsubst lv2,lv2_dsp,$(PLUGIN_FORMATS))
+TARGETS := $(patsubst dssi,dssi_dsp,$(TARGETS))
+
+all: $(TARGETS)
 
 # --------------------------------------------------------------
