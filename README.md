@@ -1,3 +1,12 @@
+**PowerAudio fork of DPF-Plugins**
+
+This fork of DPF-Plugins has the following changes:
+
+* The set of compiled plugin formats (LV2, VST, etc.) is configurable by
+  overriding the `PLUGIN_FORMATS` variable when invoking `make`.
+
+---
+
 DPF-Plugins
 ===========
 
