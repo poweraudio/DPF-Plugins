@@ -23,7 +23,8 @@ FILES_UI = \
 # Do some magic
 
 UI_TYPE = generic
-FILE_BROWSER_DISABLED = true
+SKIP_NATIVE_AUDIO_FALLBACK = true
+USE_FILE_BROWSER = false
 include ../../dpf/Makefile.plugins.mk
 
 # --------------------------------------------------------------
@@ -37,7 +38,7 @@ endif
 # --------------------------------------------------------------
 # Enable all possible plugin types
 
-PLUGIN_FORMATS = jack dssi lv2 vst2 vst3 clap
+PLUGIN_FORMATS = au clap dssi jack lv2 vst2 vst3
 TARGETS = $(patsubst lv2,lv2_sep,$(PLUGIN_FORMATS))
 
 all: $(TARGETS)

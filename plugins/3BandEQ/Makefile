@@ -23,18 +23,17 @@ FILES_UI  = \
 # Do some magic
 
 UI_TYPE = generic
-FILE_BROWSER_DISABLED = true
+SKIP_NATIVE_AUDIO_FALLBACK = true
+USE_FILE_BROWSER = false
 include ../../dpf/Makefile.plugins.mk
 
 # --------------------------------------------------------------
 # Enable all possible plugin types
 
-PLUGIN_FORMATS = jack ladspa lv2 vst2 vst3 clap
+PLUGIN_FORMATS = au clap jack ladspa lv2 vst2 vst3
 
-ifeq ($(HAVE_CAIRO_OR_OPENGL),true)
-ifeq ($(HAVE_LIBLO),true)
+ifeq ($(HAVE_CAIRO_OR_OPENGL)$(HAVE_LIBLO),truetrue)
 PLUGIN_FORMATS += dssi
-endif
 endif
 
 TARGETS = $(patsubst lv2,lv2_sep,$(PLUGIN_FORMATS))
